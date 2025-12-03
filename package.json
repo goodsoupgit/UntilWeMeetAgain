@@ -1,10 +1,38 @@
 {
   "dependencies": {
-    "cookie-parser": "^1.4.7",
     "cors": "^2.8.5",
     "express": "^5.2.1",
-    "helmet": "^8.1.0",
     "mongoose": "^9.0.0",
-    "nodemon": "^3.1.11"
-  }
+    "tsconfig-paths": "^4.2.0"
+  },
+  "name": "untilwemeetagain",
+  "version": "1.0.0",
+  "main": "index.ts",
+  "devDependencies": {
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.6",
+    "@types/mongoose": "^5.11.97",
+    "@types/node": "^24.10.1",
+    "nodemon": "^3.1.11",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.3"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon",
+    "build": "tsc",
+    "start": "node dist/index.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Axlinuz/UntilWeMeetAgain.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Axlinuz/UntilWeMeetAgain/issues"
+  },
+  "homepage": "https://github.com/Axlinuz/UntilWeMeetAgain#readme",
+  "description": ""
 }
