@@ -1,0 +1,49 @@
+version: '3.8'
+
+services:
+  # 1. Backend Service (server)
+  server:
+    # --- BUILD SETTINGS ---
+    build: 
+      context: ./backend
+      dockerfile: Dockerfile # CORRECT: Nested under 'build'
+      
+    # --- RUNTIME SETTINGS ---
+    container_name: backend_server
+    
+    ports: 
+      - "5000:5000"
+      
+    env_file:
+      - ./.env
+      
+    volumes:
+      # Fix for 'nodemon: not found' should be applied here:
+      - ./backend:/app
+      - /app/node_modules 
+      
+    # Command fix applied previously
+    command: sh -c "npm install && npm run dev"
+  
+  # 2. Frontend Service (client)
+  client:
+    # --- BUILD SETTINGS ---
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile # <-- CORRECT: Nested one level deeper under 'build'
+      
+    # --- RUNTIME SETTINGS ---
+    container_name: frontend_client 
+    
+    ports:
+      - "3000:3000"
+      
+    depends_on:
+        - server
+        
+    environment:
+      - NEXT_PUBLIC_API_URL=http://localhost:5000 
+      
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
