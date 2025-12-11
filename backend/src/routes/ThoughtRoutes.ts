@@ -6,16 +6,16 @@ const router = Router()
 
 router.post('/', async (req: Request, res: Response) => {
     try{
-        const {text, author} = req.body
+        const {text, receiver} = req.body
 
-        if(!text){
+        if(!text || !receiver){
             res.status(400).json({message: "Thought text is required"});
             return;
         }
 
         const newThought = new Thoughts({
             text,
-            author: author || "anonymous"
+            receiver: receiver || "anonymous"
         })
 
         const savedThought = await newThought.save()

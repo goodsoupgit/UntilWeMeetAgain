@@ -3,7 +3,7 @@ import type { Document } from 'mongoose';
 
 export interface Ithought extends Document {
     text: string;
-    author: string;
+    receiver: string;
     createdAt: Date;
 }
 
